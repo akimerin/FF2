@@ -4,15 +4,11 @@
 #include <climits>
 
 using namespace std;
-
-#define V 6  //  указать кол во вершин в графе
+#define V 6  //  СѓРєР°Р·Р°С‚СЊ РєРѕР» РІРѕ РІРµСЂС€РёРЅ РІ РіСЂР°С„Рµ
 
 bool bfs(int rGraph[V][V], int s, int t, int parent[])
 {
     bool visited[V];
-
-
-
     memset(visited, 0, sizeof(visited));
 
     queue<int> q;
@@ -40,11 +36,10 @@ bool bfs(int rGraph[V][V], int s, int t, int parent[])
 
     return (visited[t] == true);
 }
-
 int fordFulkerson(int graph[V][V], int s, int t)
 {
     int u, v;
-    int rGraph[V][V];  // Остаточная сеть
+    int rGraph[V][V];  // РћСЃС‚Р°С‚РѕС‡РЅР°СЏ СЃРµС‚СЊ
     for (u = 0; u < V; u++)
         for (v = 0; v < V; v++)
 
@@ -73,8 +68,8 @@ int fordFulkerson(int graph[V][V], int s, int t)
 
         max_flow += path_flow;
 
-        // Вывод состояния графа
-        cout << "Состояние графа после увеличения потока на " << path_flow << ":" << endl;
+        // Р’С‹РІРѕРґ СЃРѕСЃС‚РѕСЏРЅРёСЏ РіСЂР°С„Р°
+        cout << "The state of the graph after increasing the flow by " << path_flow << ":" << endl;
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
 
@@ -91,24 +86,20 @@ int fordFulkerson(int graph[V][V], int s, int t)
 int main()
 {
 
-
-    setlocale(LC_ALL, "RUS");
     int graph[V][V];
-    cout << "Введите матрицу пропускных способностей для графа (" << V << "x" << V << "):" << endl;
+    cout << "Enter the bandwidth matrix for the graph (" << V << "x" << V << "):" << endl;
     for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
-
 
             cin >> graph[i][j];
 
         }
     }
     int source, sink;
-    cout << "Введите исток и сток: ";
+    cout << "Enter the source and drain: ";
     cin >> source >> sink;
 
-    // Вызов алгоритма Ф-Ф
-    cout << "Максимальный поток в графе: " << fordFulkerson(graph, source, sink) << endl;
-
+    // Р’С‹Р·РѕРІ Р°Р»РіРѕСЂРёС‚РјР° Р¤-Р¤
+    cout << "The maximum flow in the graph: " << fordFulkerson(graph, source, sink) << endl;
     return 0;
 }
